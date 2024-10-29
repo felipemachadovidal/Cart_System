@@ -6,15 +6,19 @@ import java.sql.SQLException;
 
 
 import database.DatabaseConnection;
+import entities.Product;
+import entities.Storage;
 
 public class Main {
     public static void main(String[] args) {
-        DatabaseConnection dbConnection = new DatabaseConnection();
-        try {
-            dbConnection.getConnection();
-            System.out.println("Conexão estabelecida com sucesso!");
-        } catch (SQLException e) {
-            System.out.println("Erro ao conectar ao banco de dados: " + e.getMessage());
-        }
-    }
-}
+        Storage storage = new Storage();
+
+        Product novoProduto = new Product("Smartphone", 1, "Iphone", 999.99, 10);
+        Product p = null;
+
+        System.out.println(storage.read(1));
+        storage.delete(1);
+        System.out.println(storage.read(1));
+
+        System.out.println(storage.read(1));
+}}
