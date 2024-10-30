@@ -136,4 +136,17 @@ public class Cart implements Operations<Product> {
             System.err.println("Error clearing shopping_cart table after purchase: " + e.getMessage());
         }
     }
+
+    public void showCart() {
+
+        if (list.isEmpty()) {
+            System.out.println("Cart is empty.");
+        } else {
+            System.out.println("Products in cart:");
+            for (Product product : list) {
+                System.out.printf("ID: %d, Name: %s, Quantity: %d, Price: %.2f%n",
+                        product.getId(), product.getName(), product.getQuantity(), product.getPrice());
+            }
+        }
+    }
 }
