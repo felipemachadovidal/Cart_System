@@ -46,17 +46,16 @@ public class Storage implements Operations<Product> {
 
     @Override
     public void update(Product product) {
-        String sql = "UPDATE storage SET name = ?, category = ?, price = ?, quantity = ? WHERE id = ?";
+        String sql = "UPDATE storage SET quantity = ? WHERE id = ?";
+
         try (Connection conn = dbConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setString(1, product.getName());
-            stmt.setString(2, product.getCategory());
-            stmt.setDouble(3, product.getPrice());
-            stmt.setInt(4, product.getQuantity());
-            stmt.setInt(5, product.getId());
+            stmt.setInt(1, product.getQuantity());
+            stmt.setInt(2, product.getId());
             stmt.executeUpdate();
+            System.out.println("Updated product quantity in storage for ID: " + product.getId());
         } catch (SQLException e) {
-            System.err.println("Erroe updating storage: " + e.getMessage());
+            System.err.println("Error updating product in storage: " + e.getMessage());
         }
     }
 
@@ -75,10 +74,9 @@ public class Storage implements Operations<Product> {
                         rs.getDouble("price"),
                         rs.getInt("quantity")
                 );
-
             }
         } catch (SQLException e) {
-            System.err.println("Error in search " + e.getMessage());
+            System.err.println("Error in search: " + e.getMessage());
         }
         return null;
     }
