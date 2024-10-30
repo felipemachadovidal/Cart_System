@@ -1,20 +1,34 @@
 package org.example;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import entities.Cart;
+import entities.Product;
+import entities.Storage;
 
-
-import database.DatabaseConnection;
+import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-        DatabaseConnection dbConnection = new DatabaseConnection();
-        try {
-            dbConnection.getConnection();
-            System.out.println("Conexão estabelecida com sucesso!");
-        } catch (SQLException e) {
-            System.out.println("Erro ao conectar ao banco de dados: " + e.getMessage());
-        }
+        Storage storage = new Storage();
+        Cart cart = new Cart(new ArrayList<>(), storage);
+
+
+        Product product2 = new Product("Electronics", 2, "Smartphone", 999.99, 10);
+        Product product3 = new Product("Home Appliances", 3, "Blender", 49.99, 15);
+        Product product4 = new Product("Clothing", 4, "T-Shirt", 19.99, 20);
+
+
+        storage.create(product2);
+        storage.create(product3);
+        storage.create(product4);
+
+
+        cart.create(new Product("Electronics", 2, "Smartphone", 999.99, 2));
+        cart.create(new Product("Clothing", 4, "T-Shirt", 19.99, 5));
+
+
+        cart.cancelPurchase();
+
+
+        storage.showProducts();
     }
 }
