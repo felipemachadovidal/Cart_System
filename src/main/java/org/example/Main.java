@@ -1,45 +1,34 @@
 package org.example;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-
-
-import database.DatabaseConnection;
 import entities.Cart;
 import entities.Product;
 import entities.Storage;
 
+import java.util.ArrayList;
+
 public class Main {
     public static void main(String[] args) {
-
         Storage storage = new Storage();
+        Cart cart = new Cart(new ArrayList<>(), storage);
 
-        Product novoProduto = new Product("Smartphone", 1, "iPhone", 999.99, 10);
-        storage.create(novoProduto);
 
-        List<Product> cartList = new ArrayList<>();
-        Cart cart = new Cart(cartList, storage);
+        Product product2 = new Product("Electronics", 2, "Smartphone", 999.99, 10);
+        Product product3 = new Product("Home Appliances", 3, "Blender", 49.99, 15);
+        Product product4 = new Product("Clothing", 4, "T-Shirt", 19.99, 20);
 
-        System.out.println("\n--- Test> Add in the Cart ---");
-        Product produtoCarrinho = new Product("Smartphone", 1, "iPhone", 999.99, 2);
-        cart.create(produtoCarrinho);
 
-        Product produtoStorage = storage.read(1);
-        System.out.println("Storage quantity left : " + produtoStorage.getQuantity());
+        storage.create(product2);
+        storage.create(product3);
+        storage.create(product4);
 
-        System.out.println("\n--- Test: Update  ---");
-        produtoCarrinho.setQuantity(5);
-        cart.update(produtoCarrinho);
 
-        produtoStorage = storage.read(1);
-        System.out.println("Quantity left:: " + produtoStorage.getQuantity());
+        cart.create(new Product("Electronics", 2, "Smartphone", 999.99, 2));
+        cart.create(new Product("Clothing", 4, "T-Shirt", 19.99, 5));
 
-        System.out.println("\n--- Test: Removing item on cart ---");
-        cart.delete(1);
 
-        produtoStorage = storage.read(1);
-        System.out.println("Quantity left: : " + produtoStorage.getQuantity());
-}}
+        cart.cancelPurchase();
+
+
+        storage.showProducts();
+    }
+}

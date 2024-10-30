@@ -80,4 +80,27 @@ public class Storage implements Operations<Product> {
         }
         return null;
     }
+
+    public void showProducts() {
+        String sql = "SELECT * FROM storage";
+        try (Connection conn = dbConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+
+            System.out.println("Products in Storage:");
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
+                String category = rs.getString("category");
+                double price = rs.getDouble("price");
+                int quantity = rs.getInt("quantity");
+
+                System.out.println("ID: " + id + ", Name: " + name + ", Category: " + category +
+                        ", Price: $" + price + ", Quantity: " + quantity);
+            }
+        } catch (SQLException e) {
+            System.err.println("Error displaying products in storage: " + e.getMessage());
+        }
+    }
+
 }
