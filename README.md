@@ -38,7 +38,7 @@ DB_PASSWORD= password(your password)
 ###Running the Application
 -Navigate to Main class in Cart_System
 
-cd Cart_System/src/main/java/org.example
+-cd Cart_System/src/main/java/org.example
 
 -to run this application you need to open it on your IDE and run on the Main class
 
