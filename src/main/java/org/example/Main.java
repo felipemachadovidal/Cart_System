@@ -17,7 +17,7 @@ public class Main {
             System.out.println("\nChoose an option:");
             System.out.println("1. Manage Storage");
             System.out.println("2. Manage Cart");
-            System.out.println("0. Exit");
+            System.out.println("Else: Exit");
             int c = scanner.nextInt();
             if (c != 1 && c !=2) break;
 
