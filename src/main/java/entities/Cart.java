@@ -81,7 +81,6 @@ public class Cart implements Operations<Product> {
             productFromStorage.setQuantity(productFromStorage.getQuantity() + productToRemove.getQuantity());
             storage.update(productFromStorage);
 
-            // Remove do carrinho e do banco de dados
             list.remove(productToRemove);
             String sql = "DELETE FROM shopping_cart WHERE id = ?";
             try (Connection conn = dbConnection.getConnection();
@@ -125,6 +124,9 @@ public class Cart implements Operations<Product> {
 
     public void processPurchase() {
 
+        showCart();
+
+
         list.clear();
 
         String sql = "DELETE FROM shopping_cart";
@@ -134,6 +136,23 @@ public class Cart implements Operations<Product> {
             System.out.println("Purchase processed. Cart and database cart table cleared.");
         } catch (SQLException e) {
             System.err.println("Error clearing shopping_cart table after purchase: " + e.getMessage());
+        }
+    }
+
+    public void showCart() {
+
+        if (list.isEmpty()) {
+            System.out.println("Cart is empty.");
+        } else {
+            System.out.println("Products in cart:");
+            double total = 0.0;
+            for (Product product : list) {
+                System.out.printf("ID: %d, Name: %s, Quantity: %d, Price: %.2f%n",
+                        product.getId(), product.getName(), product.getQuantity(), product.getPrice());
+                total += product.getTotalValue();
+            }
+            System.out.printf("Final price: %.2f",total);
+
         }
     }
 }
