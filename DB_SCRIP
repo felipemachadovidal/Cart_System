@@ -1,0 +1,29 @@
+This is a model for your date base, you can costumize your own version, but change the collums and table name on the 
+
+-CREATE DATABASE db_cart
+
+-USE db_cart
+
+CREATE TABLE storage (
+id INT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    category VARCHAR(50),
+    price DECIMAL(10, 2) NOT NULL,
+    quantity INT NOT NULL
+)
+
+CREATE TABLE shopping_cart (
+    id INT PRIMARY KEY,
+    produto_id INT,
+    name VARCHAR(100) NOT NULL,
+    category VARCHAR(50),
+    price DECIMAL(10, 2) NOT NULL,
+    quantity INT NOT NULL
+)
+
+INSERT INTO storage (id, name, category, price, quantity) VALUES 
+(1, 'Monster Energy Drink Original', 'Food Goods', 10.99, 100),
+(2, 'Red Bull Xl', 'Food Goods', 19.99, 50),
+(3, ' Samsung SmartTV', 'Eletronics', 349.99, 200),
+(4, 'T-shirt', 'Wardrobe', 7.99, 150);
+
