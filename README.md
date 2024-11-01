@@ -35,18 +35,27 @@ DB_URL=jdbc:mysql://localhost:3306/db_cart( make sure this url its yours databas
 DB_USER= root(your user)
 DB_PASSWORD= password(your password)
 
-###Running the Application
+### Running the Application
 -Navigate to Main class in Cart_System
 
--cd Cart_System/src/main/java/org.example
+-Open your WorkBench or similar IDE for SQL
 
--to run this application you need to open it on your IDE and run on the Main class
+-Use the recomended scripts in the DB_SCRIPT.txt file in this repository
+
+#cd Cart_System/src/main/java/org.example
+
+#to run this application you need to open it on your IDE and run on the Main class
 
 ### Usage
 
 -After running the application, you can perform CRUD operations on products
 -Ensure your MySQL database is configured and running to connect successfully
+-Customoble aplication for E-comerces 
 
+### Experience
+-Used a lot of SQL, and forced me to learn and go deep in the SQL language
+- Don't used a especific Design Pattern
+- The Logical of Cart and Main was hard to create but easy to understand 
 
 
 
