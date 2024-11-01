@@ -41,6 +41,8 @@ public class Cart implements Operations<Product> {
             } catch (SQLException e) {
                 System.err.println("Error adding product to shopping_cart table: " + e.getMessage());
             }
+
+
         } else {
             System.out.println("Insufficient stock for product: " + product.getName());
         }
