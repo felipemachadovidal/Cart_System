@@ -10,14 +10,14 @@ public class Main {
     public static void main(String[] args) {
         Storage storage = new Storage();
         Cart cart = new Cart(new ArrayList<>(), storage);
-        Scanner scanner = new Scanner(System.in);
+        Scanner scn = new Scanner(System.in);
 
         while (true) {
             System.out.println("\nChoose an option:");
             System.out.println("1. Manage Storage");
             System.out.println("2. Manage Cart");
             System.out.println("Else: Exit");
-            int c = scanner.nextInt();
+            int c = scn.nextInt();
             if (c != 1 && c != 2) break;
 
             switch (c) {
@@ -25,31 +25,32 @@ public class Main {
                     boolean condition = true;
                     while (condition) {
                         System.out.println("Storage Menu: ");
+                        scn.next();
                         System.out.println("1. Show Products");
                         System.out.println("2. Add Product");
                         System.out.println("3. Delete Product");
                         System.out.println("4. Update Quantity");
                         System.out.println("Else: Return to main menu");
-                        int sc = scanner.nextInt();
+                        int sc = scn.nextInt();
 
                         switch (sc) {
                             case 1 -> storage.showProducts();
                             case 2 -> {
                                 System.out.println("Enter product details (ID, name, price, quantity):");
-                                int id = scanner.nextInt();
-                                String name = scanner.next();
-                                double price = scanner.nextDouble();
-                                int quantity = scanner.nextInt();
+                                int id = scn.nextInt();
+                                String name = scn.next();
+                                double price = scn.nextDouble();
+                                int quantity = scn.nextInt();
                                 storage.create(new Product("Category", id, name, price, quantity));
                             }
                             case 3 -> {
                                 System.out.println("Enter product ID to delete:");
-                                storage.delete(scanner.nextInt());
+                                storage.delete(scn.nextInt());
                             }
                             case 4 -> {
                                 System.out.println("Enter product ID and new quantity:");
-                                int id = scanner.nextInt();
-                                int quantity = scanner.nextInt();
+                                int id = scn.nextInt();
+                                int quantity = scn.nextInt();
                                 Product product = storage.read(id);
                                 if (product != null) {
                                     product.setQuantity(quantity);
@@ -75,15 +76,15 @@ public class Main {
                         System.out.println("4. Cancel Purchase");
                         System.out.println("5. Complete Purchase");
                         System.out.println("Else: Return to main menu");
-                        int cc = scanner.nextInt();
+                        int cc = scn.nextInt();
 
                         switch (cc) {
                             case 1 -> {
                                 storage.showProducts();
                                 System.out.println("Enter product ID to add:");
-                                int id = scanner.nextInt();
+                                int id = scn.nextInt();
                                 System.out.println("Enter quantity:");
-                                int quantity = scanner.nextInt();
+                                int quantity = scn.nextInt();
 
                                 Product product = storage.read(id);
                                 if (product != null && product.getQuantity() >= quantity) {
@@ -98,7 +99,7 @@ public class Main {
                             case 2 -> cart.showCart();
                             case 3 -> {
                                 System.out.println("Enter product ID to remove:");
-                                int id = scanner.nextInt();
+                                int id = scn.nextInt();
                                 cart.delete(id);
                                 System.out.println("Product removed from cart.");
                                 cart.showCart();
@@ -110,7 +111,7 @@ public class Main {
                             }
                             case 5 -> {
                                 System.out.println("Your Cart:");
-
+                                scn.next();
                                 cart.showCart();
                                 cart.processPurchase();
                                 condition = false;
@@ -126,6 +127,6 @@ public class Main {
                 default -> System.out.println("Invalid option. Try again.");
             }
         }
-        scanner.close();
+        scn.close();
     }
 }
