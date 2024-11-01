@@ -18,29 +18,17 @@ public class Product {
         this.quantity = quantity;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
-    public void setPrice(double price) {
-        this.price = price;
-    }
 
     public String getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
-    }
 
     public int getId() {
         return id;
