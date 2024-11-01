@@ -11,12 +11,15 @@ public class Main {
         Storage storage = new Storage();
         Cart cart = new Cart(new ArrayList<>(), storage);
         Scanner scn = new Scanner(System.in);
+        System.out.println("Welcome to Web E-comerce online ");
 
         while (true) {
-            System.out.println("\nChoose an option:");
+            System.out.println("-------------------------------------------------");
+            System.out.println("Web E-comerce Menu: ");
             System.out.println("1. Manage Storage");
             System.out.println("2. Manage Cart");
             System.out.println("Else: Exit");
+            System.out.println("-------------------------------------------------");
             int c = scn.nextInt();
             if (c != 1 && c != 2) break;
 
@@ -24,13 +27,14 @@ public class Main {
                 case 1 -> {
                     boolean condition = true;
                     while (condition) {
+                        System.out.println("-------------------------------------------------");
                         System.out.println("Storage Menu: ");
-                        scn.next();
                         System.out.println("1. Show Products");
                         System.out.println("2. Add Product");
                         System.out.println("3. Delete Product");
                         System.out.println("4. Update Quantity");
                         System.out.println("Else: Return to main menu");
+                        System.out.println("-------------------------------------------------");
                         int sc = scn.nextInt();
 
                         switch (sc) {
@@ -69,6 +73,7 @@ public class Main {
                 case 2 -> {
                     boolean condition = true;
                     while (condition) {
+                        System.out.println("-------------------------------------------------");
                         System.out.println("Cart Menu: ");
                         System.out.println("1. Add Product to Cart");
                         System.out.println("2. View Cart");
@@ -76,6 +81,7 @@ public class Main {
                         System.out.println("4. Cancel Purchase");
                         System.out.println("5. Complete Purchase");
                         System.out.println("Else: Return to main menu");
+                        System.out.println("-------------------------------------------------");
                         int cc = scn.nextInt();
 
                         switch (cc) {
@@ -128,5 +134,6 @@ public class Main {
             }
         }
         scn.close();
+        System.out.println("Thanks for yours visit :)");
     }
 }
