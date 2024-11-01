@@ -24,7 +24,7 @@ public class Main {
                 case 1 -> {
                     boolean condition = true;
                     while (condition) {
-                        System.out.println("\nStorage:");
+                        System.out.println("Storage Menu: ");
                         System.out.println("1. Show Products");
                         System.out.println("2. Add Product");
                         System.out.println("3. Delete Product");
@@ -68,11 +68,12 @@ public class Main {
                 case 2 -> {
                     boolean condition = true;
                     while (condition) {
-                        System.out.println("\nCart:");
+                        System.out.println("Cart Menu: ");
                         System.out.println("1. Add Product to Cart");
                         System.out.println("2. View Cart");
-                        System.out.println("3. Cancel Purchase");
-                        System.out.println("4. Complete Purchase");
+                        System.out.println("3. Remove Product from Cart");
+                        System.out.println("4. Cancel Purchase");
+                        System.out.println("5. Complete Purchase");
                         System.out.println("Else: Return to main menu");
                         int cc = scanner.nextInt();
 
@@ -96,11 +97,21 @@ public class Main {
                             }
                             case 2 -> cart.showCart();
                             case 3 -> {
+                                System.out.println("Enter product ID to remove:");
+                                int id = scanner.nextInt();
+                                cart.delete(id);
+                                System.out.println("Product removed from cart.");
+                                cart.showCart();
+                            }
+                            case 4 -> {
                                 cart.cancelPurchase();
                                 condition = false;
                                 System.out.println("Purchase canceled, returning to main menu.");
                             }
-                            case 4 -> {
+                            case 5 -> {
+                                System.out.println("Your Cart:");
+
+                                cart.showCart();
                                 cart.processPurchase();
                                 condition = false;
                                 System.out.println("Purchase completed, returning to main menu.");
