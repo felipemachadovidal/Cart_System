@@ -24,12 +24,12 @@ The Cart System is a Java-based model-application designed to manage a shopping 
   
 ### Installation:
 -clone this repository
- git clone https://github.com/felipemachadovidal/Cart_System
+ : git clone https://github.com/felipemachadovidal/Cart_System
 
  -Navigate to project main
  cd Cart_System
 
-= Create a .env file on Cart_system directory
+- Create a .env file on Cart_system directory
 
 -Update the .env file with your database data
 DB_URL=jdbc:mysql://localhost:3306/db_cart( make sure this url its yours database url)
