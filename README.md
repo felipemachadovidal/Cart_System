@@ -29,6 +29,7 @@ The Cart System is a Java-based model-application designed to manage a shopping 
  -Navigate to project main
  cd Cart_System
 
+= Create a .env file on Cart_system directory
 
 -Update the .env file with your database data
 DB_URL=jdbc:mysql://localhost:3306/db_cart( make sure this url its yours database url)
