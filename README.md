@@ -35,8 +35,13 @@ The Cart System is a Java-based model-application designed to manage a shopping 
 
 
 DB_URL=jdbc:mysql://localhost:3306/db_cart( make sure this url its yours database url)
+
+
 DB_USER= root(your user)
+
+
 DB_PASSWORD= password(your password)
+
 
 ### Running the Application
 -Navigate to Main class in Cart_System
